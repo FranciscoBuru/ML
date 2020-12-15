@@ -34,29 +34,29 @@
 ![image](4-8.png)
 ## 4-9
 ![image](4-9.png)
-## 5-1
-`![image](5-1.png) | ![image](5b-1.jpg)`
+## 5-1 
+#### `![image](5-1.png) | ![image](5b-1.jpg)`
 ![image](5-1.png) | ![image](5b-1.jpg)
-## 5-2
-`![image](5-2.png) |![image](5b-2.jpeg)`
+## 5-2 
+#### `![image](5-2.png) |![image](5b-2.jpeg)`
 ![image](5-2.png) |![image](5b-2.jpeg)
 ## 5-3
-`![image](5-3.png) | ![image](5b-3.jpeg)`
+#### `![image](5-3.png) | ![image](5b-3.jpeg)`
 ![image](5-3.png) | ![image](5b-3.jpeg)
 ## 5-4
-`![image](5-4.png) | ![image](5b-4.jpg)`
+#### `![image](5-4.png) | ![image](5b-4.jpg)`
 ![image](5-4.png) | ![image](5b-4.jpg)
 ## 5-5
-`![image](5-5.png) | ![image](5b-5.jpeg)`
+#### `![image](5-5.png) | ![image](5b-5.jpeg)`
 ![image](5-5.png) | ![image](5b-5.jpeg)
 ## 5-6
-`![image](5-6.png) | ![image](5b-6.jpg)`
+#### `![image](5-6.png) | ![image](5b-6.jpg)`
 ![image](5-6.png) | ![image](5b-6.jpg)
 ## 5-7
-`![image](5-7.png) |![image](5b-7.jpeg)`
+#### `![image](5-7.png) |![image](5b-7.jpeg)`
 ![image](5-7.png) |![image](5b-7.jpeg)
 ## 5-8
-`![image](5-8.png) | ![image](5b-8.jpeg)`
+#### `![image](5-8.png) | ![image](5b-8.jpeg)`
 ![image](5-8.png) | ![image](5b-8.jpeg)
 ## 5b-1
 ![image](5b-1.jpg)
