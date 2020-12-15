@@ -65,4 +65,4 @@
 ## 5b-7
 ![image](5b-7.jpeg)
 ## 5b-8
-![image](5b-8.jpg)
+![image](5b-8.jpeg)
