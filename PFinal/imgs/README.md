@@ -35,7 +35,7 @@
 ## 4-9
 ![image](4-9.png)
 ## 5-1
-![image](5-1.png)
+![image](5-1.png) | ![image](5b-1.jpg)
 ## 5-2
 ![image](5-2.png)
 ## 5-3
