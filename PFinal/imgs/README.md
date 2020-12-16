@@ -34,6 +34,14 @@
 ![image](4-8.png)
 ## 4-9
 ![image](4-9.png)
+## 4-10
+![image](4-10.png)
+## 4-11
+![image](4-11.png)
+## 4-12
+![image](4-12.png)
+## 4-13
+![image](4-13.png)
 ## 5-1 
 #### `![image](5-1.png) | ![image](5b-1.jpg)`
 ![image](5-1.png) | ![image](5b-1.jpg)
