@@ -127,8 +127,57 @@ Importamos los generadores y discriminadores de nuestro ejercicio pasado.
 
 La parte más interesante son las funciónes de pérdida. Primero tenemos que tomar en cuenta la pérdida de consistencia entre
 la imagen original y la imagen regenerada en el dominio original. 
+![image](imgs/d3.png)
+Usamos una función de tipo Mean Squared error para reducir la pérdida de consistencia. Introducimos el concepto de pérdida de 
+identidad, esto es, una imagen en `X` y la misma imagen operada por `F(X)` deben de ser la misma (recordar `(F: Y -> X)`). Para 
+minimizar la pérdida de identidad tomamos el valor absoluto de las diferencias usando `X` y `Y`. 
+
+Para poder reconstruir el modelo entrenado en cualquier momento y usarlo usamos checkpoints, los checkpoints nos permiten 
+cargar los pesos de una red entrenada. Guardamos un checkpoint cada 5 iteraciones. Durante el entrenamiento siempre vamos a 
+mostrar la misma imagen original y traducida para poder ver la mejora de la GAN. Este modelo lo entrenamos durante 40 épocas 
+pues a nosotros nos interesan las pinturas, no las cebras. En promedio las épocas tardaron 500 segundos por lo que el modelo tardó
+5 horas y media en entrenarse. A continuación mostramos los resultados después de la primera y la última época:
+![image](imgs/3-1.png)
+![image](imgs/3-2.png)
+![image](imgs/3-3.png)
+
+En general el modelo no es el mejor pero lo usamos sólo como una idea para poder entrenar nuestro proyecto.
 ## Proyecto van Gogh
-### Set-Up
-### Entrenamiento
-### Resultados
-z0
+
+Entendiendo todo lo descrito anteriormente estamos listos para entrenar nuestro modelo artístico.
+Usamos todo lo anterior más [este](https://www.tensorflow.org/datasets/catalog/cycle_gan#cycle_ganvangogh2photo) dataset. 
+El dataset tiene 400 obras del pintor Vincent van Gogh y cerca de 7000 imágenes en las que predominan los pasajes.
+Una época de entrenamiento cícla todas las fotos del dataset de entrenamiento. Cada época tardó en promedio 200 segundos y 
+entrenamos durante 200 épocas por lo que el tiempo de entrenamiento fue de poco más de 11 horas. A continuación mostramos 
+los resultados de algunas de las épocas.
+![image](imgs/4-1.png)
+![image](imgs/4-2.png)
+![image](imgs/4-3.png)
+![image](imgs/4-4.png)
+![image](imgs/4-5.png)
+![image](imgs/4-6.png)
+![image](imgs/4-7.png)
+
+Vemos cómo va mejorando pero en algunas iteraciones hay resultados extraños. Después de las 200 épocas probamos la 
+traducción desde y hacia ambos dominios con imágenes del dataset y estos fueron los resultados.
+![image](imgs/4-8.png)
+![image](imgs/4-9.png)
+
+Vemos que en imágenes del dataset la traducción es buena.
+
+Al llegar a esto preparamos imágenes nuestras que varían un poco del dataset y estos fueron los resultados. 
+![image](5b-1.png) | ![image](5-1.jpg)
+![image](5b-2.png) | ![image](5-2.jpg)
+![image](5b-3.png) | ![image](5-3.jpg)
+![image](5b-4.png) | ![image](5-4.jpg)
+![image](5b-5.png) | ![image](5-5.jpg)
+![image](5b-6.png) | ![image](5-6.jpg)
+![image](5b-7.png) | ![image](5-7.jpg)
+![image](5b-8.png) | ![image](5-8.jpg)
+
+
+
+
+
+
+
