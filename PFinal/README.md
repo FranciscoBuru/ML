@@ -93,8 +93,42 @@ Durante el entrenamiento se fueron guardando las pérdidas totales por generaci�
 
 
 ## GANs para transferencia de estilo
+En esta sección nos basamos en el siguiente [paper](https://arxiv.org/abs/1703.10593). Usamos el este 
+[dataset](https://www.tensorflow.org/datasets/catalog/cycle_gan) de tensorflow. 
+El [tutorial](https://www.tensorflow.org/tutorials/generative/cyclegan) que seguimos convierte caballos a cebras. 
+Este es [notebook](https://github.com/FranciscoBuru/ML/blob/master/PFinal/src/Horse2Zebra.ipynb) correspondiente
+Importamos el dataset con 
+```python
+dataset, metadata = tfds.load('cycle_gan/horse2zebra',
+                              with_info=True, as_supervised=True)
 
+train_horses, train_zebras = dataset['trainA'], dataset['trainB']
+test_horses, test_zebras = dataset['testA'], dataset['testB']
+
+```
+En cada cíclo de entrenamiento se le van a hacer pequeños cambios a cada imagen para que haya cierta variabilidad en los inputs.
+De las imágenes tomamos subsecciones 256x256 pixeles y se voltean con cientra probabilidad.
+El generador y discriminador son los mismos que usamos en el ejemplo anterior. Al entrenatr hacemos varios cambios. 
+
+Queremos mandar una imagen de un dominio `X` a un dominio `Y` y sin que la imagen en `X` pierda estructura principal por
+lo que tendremos que aplicar una función inversa que vaya de `Y` a `X` y comparar la imagen convertida dos veces con la original
+minimizando las diferencias entre ambas imágenes. esto es:
+
+
+<img src="https://render.githubusercontent.com/render/math?math=(G: X -> Y)">
+<img src="https://render.githubusercontent.com/render/math?math=(F: Y -> X)">
+
+
+El discriminador `D_X` aprenderá a diferenciar imágenes en `X` y las generadas `X = F(Y)`
+y el discriminador `D_Y` aprenderá a diferenciar imágenes en `Y` y las generadas `Y = G(X)`
+
+Importamos los generadores y discriminadores de nuestro ejercicio pasado.
+
+
+La parte más interesante son las funciónes de pérdida. Primero tenemos que tomar en cuenta la pérdida de consistencia entre
+la imagen original y la imagen regenerada en el dominio original. 
 ## Proyecto van Gogh
 ### Set-Up
 ### Entrenamiento
 ### Resultados
+z0
