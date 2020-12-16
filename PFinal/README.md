@@ -162,6 +162,10 @@ Vemos cómo va mejorando pero en algunas iteraciones hay resultados extraños. D
 traducción desde y hacia ambos dominios con imágenes del dataset y estos fueron los resultados.
 ![image](imgs/4-8.png)
 ![image](imgs/4-9.png)
+![image](imgs/4-10.png)
+![image](imgs/4-11.png)
+![image](imgs/4-12.png)
+![image](imgs/4-13.png)
 
 Vemos que en imágenes del dataset la traducción es buena.
 
