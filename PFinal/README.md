@@ -166,16 +166,64 @@ traducción desde y hacia ambos dominios con imágenes del dataset y estos fuero
 Vemos que en imágenes del dataset la traducción es buena.
 
 Al llegar a esto preparamos imágenes nuestras que varían un poco del dataset y estos fueron los resultados. 
-![image](5b-1.png) | ![image](5-1.jpg)
-![image](5b-2.png) | ![image](5-2.jpg)
-![image](5b-3.png) | ![image](5-3.jpg)
-![image](5b-4.png) | ![image](5-4.jpg)
-![image](5b-5.png) | ![image](5-5.jpg)
-![image](5b-6.png) | ![image](5-6.jpg)
-![image](5b-7.png) | ![image](5-7.jpg)
-![image](5b-8.png) | ![image](5-8.jpg)
 
 
+![image](imgs/5b-1.jpg)
+
+
+![image](imgs/5-1.png)
+
+
+![image](imgs/5b-2.jpeg)
+
+
+![image](imgs/5-2.png)
+
+
+![image](imgs/5b-3.jpeg)
+
+
+![image](imgs/5-3.png)
+
+
+![image](imgs/5b-4.jpg)
+
+
+![image](imgs/5-4.png)
+
+
+![image](imgs/5b-5.jpeg)
+
+
+![image](imgs/5-5.png)
+
+
+![image](imgs/5b-6.jpg)
+
+
+![image](imgs/5-6.png)
+
+
+![image](imgs/5b-7.jpeg)
+
+
+![image](imgs/5-7.png)
+
+
+![image](imgs/5b-8.jpeg)
+
+
+![image](imgs/5-8.png)
+
+
+## Conclusiones
+* Subestimamos la complejidad del proyecto propuesto
+* Vimos que ML es básicamente optimización numérica con algebra lineal avanzada con un nombre que llama la atención
+* Medir la eficiencia de las GANs es tarea complicada. Para nuestro proyecto podríamos medir la eficiencia de las funciones `F` y 
+`G` al medir las pérdidads de identidad pero no sabremos que tan bien se va a comportar con fotos externas.
+* Nuestra GAN es muy buena al traducir imágenes con las que se entrenó pero no es lo mejor con imágenes nuevas.
+* El tiempo de computación y el nivel de complejidad fueron muy altos, dedicamos más de 23 horas hombre a la elaboración del 
+proyecto pues nos enfocamos en entender qué estabamos haciendo. 
 
 
 
