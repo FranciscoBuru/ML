@@ -62,7 +62,34 @@ Ya que nos familiarizamos con tensorflow y entendemos las ideas básicas de la t
 caso es [este](https://github.com/FranciscoBuru/ML/blob/master/PFinal/src/Pix2Pix.ipynb) y está basado en el siguiente [paper](https://arxiv.org/pdf/1611.07004.pdf).
 Lo que se hace es traducir una imagen a otra. Ejemplo en corto: Haces un sketch de un paisaje con puras figuras geométricas básicas y lo quieres traducir a un 
 paisaje real. En este ejemplo hacemos esto pero traducimos sketches de edificios a edificos reales. La siguiente imagen de nuestros resultados ilustra la idea 
-básica de lo que se hace. 
+básica de lo que se hace.
+![image](imgs/2-4.png)
+
+La estructura de una GAN está basada en la construcción y entrenamiento de una red Generadora y una Discriminadora. A grandes rasgoz
+el generador genera imágenes y el discriminador decide si éstas son reales o no. En este ejemplo construimos el generador y el 
+discriminador desde cero usando tensorflow. Para el generador usamos `tf.keras.layers.Input()`. El generador tiene 21 capas 
+intermedias; la mitad son de entrada (van hacia adentro) y las demás de salida (reconstuyen la imagen.) Se le asigna una función
+de pérdida de tipo sigmoidal al generador para obligar que la imagen generada sea estructuralmente parecida a la objetivo.
+El procedimiento pare entrenar al generador es el siguiente:
+![image](imgs/imagen.png)
+
+El discriminador igual se construyó y es del tipo PatchGAN, tipo de redes neuronales que penaliza la estuctura de la imagen 
+en subsecciones de la misma. El discriminador recibe un total de 3 imágenes: Input, target e imagen generada. La función de 
+pérdida del discriminador es entrópica. El prodecimiento para entrenar al discriminador es el siguiente:
+![image](imgs/d2.png)
+
+### Entrenamiento
+A continuación mostramos algunos pasos del entrenamiento en los que vemos cómo las redes van mejorando. Para entrenar este modelo
+se necesitaron 5 horas de cómputo intensivo.
+
+![image](imgs/2-1.png)
+![image](imgs/2-2.png)
+![image](imgs/2-3.png)
+![image](imgs/2-4.png)
+
+Durante el entrenamiento se fueron guardando las pérdidas totales por generación. 
+
+![image](imgs/2-5.png)
 
 
 ## GANs para transferencia de estilo
