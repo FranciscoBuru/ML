@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Proyecto elaborado para la materia de Aprendizaje de Máquina impoartida en el ITAM durante el semestre Otoño 2020. Propusimos usar GANs (Generative Adversarial 
+Proyecto elaborado para la materia de Aprendizaje de Máquina ampartida en el ITAM durante el semestre Otoño 2020. Propusimos usar GANs (Generative Adversarial 
 Networks)
 y entrenar una red que conviertiera imágenes normales a pinturas al estilo de Vincent van Gogh. Para lograr esto; primero debimos entender qué es tensorflow y 
 aprender
@@ -107,27 +107,36 @@ test_horses, test_zebras = dataset['testA'], dataset['testB']
 
 ```
 En cada cíclo de entrenamiento se le van a hacer pequeños cambios a cada imagen para que haya cierta variabilidad en los inputs.
-De las imágenes tomamos subsecciones 256x256 pixeles y se voltean con cientra probabilidad.
-El generador y discriminador son los mismos que usamos en el ejemplo anterior. Al entrenatr hacemos varios cambios. 
+De las imágenes tomamos subsecciones 256x256 pixeles y se voltean con cierta probabilidad en cada iteración.
+El generador y discriminador son los mismos que usamos en el ejemplo anterior. Al entrenar hacemos varios cambios en las funciones de pérdida.
 
 Queremos mandar una imagen de un dominio `X` a un dominio `Y` y sin que la imagen en `X` pierda estructura principal por
 lo que tendremos que aplicar una función inversa que vaya de `Y` a `X` y comparar la imagen convertida dos veces con la original
-minimizando las diferencias entre ambas imágenes. esto es:
+minimizando las diferencias entre ambas imágenes.
 
-
-<img src="https://render.githubusercontent.com/render/math?math=(G: X -> Y)">
-<img src="https://render.githubusercontent.com/render/math?math=(F: Y -> X)">
-
+Declaramos las funciones que transformarán imágenes de un dominio a otro: `G: X -> Y` y `F: Y -> X`.
 
 El discriminador `D_X` aprenderá a diferenciar imágenes en `X` y las generadas `X = F(Y)`
 y el discriminador `D_Y` aprenderá a diferenciar imágenes en `Y` y las generadas `Y = G(X)`
 
+
+Primero, a diferencia de un Pix2Pix nosotros no tenemos una imagen objetivo por lo que queremos crear una.
+
+
 Importamos los generadores y discriminadores de nuestro ejercicio pasado.
 
 
-La parte más interesante son las funciónes de pérdida. Primero tenemos que tomar en cuenta la pérdida de consistencia entre
-la imagen original y la imagen regenerada en el dominio original. 
+La parte más interesante son las funciónes de pérdida. 
+A diferencia de Pix2Pix, en este tipo de aplicaciones no tenemos una imagen objetivo por lo que sería ideal generar una de alguna forma. 
+La idea más natural es hacer una doble conversión, mandar a la imagen `a` de `X` a `Y` y el resultado regresarlo de `Y` a `X`. 
 ![image](imgs/d3.png)
+
+Primero tenemos que tomar en cuenta la pérdida de consistencia entre
+la imagen original y la imagen "objetivo" en el dominio original. Lo que queremos minimizar es la siguiente distancia:` |X - F(G(X)| `
+así aseguraremos que dentro de todo las imágenes sean parecidas estructuralmente. 
+También queremos asegurarnos que la identidad de las imágenes se mantenga en las GANs, esto es: Si alimentamos a la
+función ` G: X -> Y ` una imagen que se encuentre en `Y` entonces esperamos que el output de la función sea casi 
+idéntico a la foto original por lo que también minimizaremos sobre las distancias  `|G(Y)-Y|` y `|F(X)-X|` 
 Usamos una función de tipo Mean Squared error para reducir la pérdida de consistencia. Introducimos el concepto de pérdida de 
 identidad, esto es, una imagen en `X` y la misma imagen operada por `F(X)` deben de ser la misma (recordar `(F: Y -> X)`). Para 
 minimizar la pérdida de identidad tomamos el valor absoluto de las diferencias usando `X` y `Y`. 
@@ -143,6 +152,7 @@ pues a nosotros nos interesan las pinturas, no las cebras. En promedio las époc
 
 En general el modelo no es el mejor pero lo usamos sólo como una idea para poder entrenar nuestro proyecto.
 ## Proyecto van Gogh
+
 
 Entendiendo todo lo descrito anteriormente estamos listos para entrenar nuestro modelo artístico.
 Usamos todo lo anterior más [este](https://www.tensorflow.org/datasets/catalog/cycle_gan#cycle_ganvangogh2photo) dataset. 
@@ -218,6 +228,13 @@ Al llegar a esto preparamos imágenes nuestras que varían un poco del dataset y
 
 
 ![image](imgs/5-8.png)
+## Resultados
+Como pudimos apreciar en las últimas imágenes, la capacidad de la GAN para transformar imágenes con las que no fue entrenada de un dominio a otro no es alta. 
+La GAN funciona muy bien con imágenes con las que se entrenó aunque en algunos casos da relieves extraños cuando traduces de foto a pintura en secciones
+donde la foto es muy lisa, por ejemplo en los cielos despejados de los paisajes. Si, por ejemplo, quisieramos traducir imágenes del ITAM a algún estilo,
+lo mejor sería entrenar a la GAN con un dataset que contenga mayoritariamente fotos del ITAM. Para poder usar un dataset propio se debe hacer algo parecido 
+a lo ejecutado en las últimas líneas del notebook y así cargar a tensorflow las imágenes con las que queremos entrenar a la red. Por practicidad usamos un 
+dataset ya hecho, hacer uno nosotros nos habría tomado un tiempo considerable. 
 
 
 ## Conclusiones
@@ -228,6 +245,25 @@ Al llegar a esto preparamos imágenes nuestras que varían un poco del dataset y
 * Nuestra GAN es muy buena al traducir imágenes con las que se entrenó pero no es lo mejor con imágenes nuevas.
 * El tiempo de computación y el nivel de complejidad fueron muy altos, dedicamos más de 23 horas hombre a la elaboración del 
 proyecto pues nos enfocamos en entender qué estabamos haciendo. 
+
+## Lo que aprendimos
+* En la práctica, el manejo de datos y creación de datasets es lo más tardado cuando qeremos usar aprendizaje de máquina. Los ejemplos más comunes de 
+aprendizaje sun puramente explicativos (i.e. los que usan iris dataset) y en realidad la parte más divertida es el análisis ya tienes datos
+confiables que puedas procesar.
+* La base del aprendizaje de máquina está en optimización numérica de funciones escalares y el algebra lineal. Algoritmos populares hoy, por ejemplo
+BFGS (Quasi-Newton) fueron propuestos hace más de 20 años. El incremento en la capacidad de procesamiento es lo que ha llevado a la aplicación de éste
+y muchos otros métodos de optimización que llevan años existiendo. De hecho, es interesante reflexionar sobre la época en la que la optimización 
+numérica tomó fuerza, la segunda guera mundial; así, de cierta forma, sin segunda guerra mundial hoy las disciplinas del aprendizaje de máquina y la 
+inteligencia artificial no estarían tan desarrollados o talvez ni existirían. 
+* Medir la eficiencia de una GAN es dificil. Cuando queremos medir que tan buena es con respecto al training set se pueden obtener resultados buenos 
+pero al alimentar datos externos los resultados pueden ser algo extraños. En nuestro proyecto podemos apreciar estas grandes diferencias 
+visualmente pues trabajamos con fotos.
+
+
+
+
+
+
 
 
 
