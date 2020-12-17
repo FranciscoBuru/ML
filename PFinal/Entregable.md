@@ -147,12 +147,16 @@ varias horas.
 ## Reflexiones
 
 * En la práctica, el manejo de datos y creación de datasets es lo más tardado cuando qeremos usar aprendizaje de máquina.
-Los ejemplos más comunes de aprendizaje sun puramente explicativos (i.e. los que usan iris dataset) y en realidad la parte
-más divertida es el análisis ya tienes datosconfiables que puedas procesar.
-* La base del aprendizaje de máquina está en optimización numérica de funciones escalares y el algebra lineal. Algoritmos
-populares hoy, por ejemplo BFGS (Quasi-Newton) fueron propuestos hace más de 20 años. El incremento en la capacidad de
-procesamiento es lo que ha llevado a la aplicación de éste y muchos otros métodos de optimización que llevan años
-existiendo. De hecho, es interesante reflexionar sobre la época en la que la optimización 
-numérica tomó fuerza, la segunda guera mundial; así, de cierta forma, sin segunda guerra mundial hoy las disciplinas del
-aprendizaje de máquina y la inteligencia artificial no estarían tan desarrollados o talvez ni existirían. 
+Los ejemplos más comunes de aprendizaje son puramente explicativos (i.e. los que usan iris dataset).  La parte
+más divertida es el análisis ya tienes datos confiables que puedas procesar. Pero la recolección, acondicionamiento y 
+uso de datos es muy tedioso, lidear con las distintas versiones de paquetes e incluso de ambientes de programación es
+algo que toma mucho tiempo y requiere mucha organización (por algo existe Docker). Realmente, una persona que se 
+dedique a aplicar ML pasa el 90% de su tiempo acondicionando datos y el otro 10% corriendo los modelos. 
+* La base del aprendizaje de máquina está en optimización numérica de funciones escalares y el algebra lineal, todo el 
+contenido del Nocedal (Biblia de optimización). Algoritmos populares hoy, por ejemplo BFGS (Quasi-Newton) fueron
+propuestos hace más de 20 años. El incremento en la capacidad de procesamiento es lo que ha llevado a la aplicación de
+éste y muchos otros métodos de optimización que llevan años existiendo. De hecho, es interesante reflexionar sobre la
+época en la que la optimización numérica tomó fuerza, la segunda guera mundial; así, de cierta forma, sin segunda guerra
+mundial hoy las disciplinas del aprendizaje de máquina y la inteligencia artificial no estarían tan desarrollados o tálvez
+ni existirían. 
 
